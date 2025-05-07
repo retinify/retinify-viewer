@@ -1,0 +1,2 @@
+add_executable(viewer_sample main.cpp)
+target_link_libraries(viewer_sample retinify-viewer)
