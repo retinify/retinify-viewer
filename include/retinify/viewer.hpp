@@ -1,5 +1,5 @@
+// SPDX-FileCopyrightText: Copyright (c) 2025 Sensui Yagi
 // SPDX-License-Identifier: Apache-2.0
-// Copyright (c) 2025 Sensui Yagi
 
 #pragma once
 #include <opencv2/core.hpp>

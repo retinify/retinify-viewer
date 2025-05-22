@@ -1,5 +1,5 @@
+// SPDX-FileCopyrightText: Copyright (c) 2025 Sensui Yagi
 // SPDX-License-Identifier: Apache-2.0
-// Copyright (c) 2025 Sensui Yagi
 
 #include "retinify/viewer.hpp"
 
@@ -48,6 +48,11 @@ void Viewer::Points(const std::string &name, const cv::Mat &img, const cv::Mat &
     }
 
     if (points.type() != CV_32FC3)
+    {
+        return;
+    }
+
+    if (img.size() != points.size())
     {
         return;
     }
