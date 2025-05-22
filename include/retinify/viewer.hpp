@@ -11,12 +11,35 @@ class Viewer
 {
   public:
     Viewer();
-    ~Viewer();
+    ~Viewer() = default;
     Viewer(const Viewer &) = delete;
     Viewer &operator=(const Viewer &) = delete;
     Viewer(Viewer &&) = delete;
     Viewer &operator=(Viewer &&) = delete;
+    /**
+     * @brief Log text to viewer
+     *
+     * @param name category name
+     * @param text text to log
+     * @param color text color
+     */
+    void Text(const std::string &name, const std::string &text, cv::Scalar color = cv::Scalar(255, 255, 255));
+    /**
+     * @brief Log image to viewer
+     *
+     * @param name category name
+     * @param img image to log
+     * @note image must be BGR CV_8UC3
+     */
     void Image(const std::string &name, const cv::Mat &img);
+    /**
+     * @brief Log points to viewer
+     *
+     * @param name category name
+     * @param img image to log
+     * @param points points to log
+     * @note image must be BGR CV_8UC3, points must be CV_32FC3
+     */
     void Points(const std::string &name, const cv::Mat &img, const cv::Mat &points);
 
   private:
