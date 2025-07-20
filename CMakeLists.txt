@@ -4,8 +4,10 @@ project(retinify-viewer LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Release)
 
+find_package(retinify REQUIRED)
+
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.22.1/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.24.0/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
 find_package(OpenCV REQUIRED)
@@ -17,7 +19,7 @@ add_library(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
-        rerun_sdk ${OpenCV_LIBS}
+        retinify rerun_sdk ${OpenCV_LIBS}
 )
 
 target_include_directories(${PROJECT_NAME}

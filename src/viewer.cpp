@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: Copyright (c) 2025 Sensui Yagi
 // SPDX-License-Identifier: Apache-2.0
 
+#include <retinify/retinify.hpp>
+
 #include "retinify/viewer.hpp"
 
 namespace retinify
@@ -11,24 +13,17 @@ Viewer::Viewer()
     rec.log_static("world", rerun::ViewCoordinates::RIGHT_HAND_Y_DOWN);
 }
 
-void Viewer::Text(const std::string &name, const std::string &text, cv::Scalar color)
-{
-    rec.log(name, rerun::TextLog(text).with_color(
-                      rerun::components::Color(static_cast<uint8_t>(color[2]), static_cast<uint8_t>(color[1]),
-                                               static_cast<uint8_t>(color[0]), static_cast<uint8_t>(255))));
-}
-
 void Viewer::Image(const std::string &name, const cv::Mat &img)
 {
     if (img.empty())
     {
-        this->Text(name, "Image: input image is empty");
+        LogWarn("Image: input image is empty");
         return;
     }
 
     if (img.type() != CV_8UC3)
     {
-        this->Text(name, "Image: input image is not CV_8UC3");
+        LogWarn("Image: input image is not CV_8UC3");
         return;
     }
 
@@ -41,31 +36,31 @@ void Viewer::Points(const std::string &name, const cv::Mat &img, const cv::Mat &
 {
     if (img.empty())
     {
-        this->Text(name, "Points: input image is empty");
+        LogWarn("Points: input image is empty");
         return;
     }
 
     if (points.empty())
     {
-        this->Text(name, "Points: input points is empty");
+        LogWarn("Points: input points is empty");
         return;
     }
 
     if (img.type() != CV_8UC3)
     {
-        this->Text(name, "Points: input image is not CV_8UC3");
+        LogWarn("Points: input image is not CV_8UC3");
         return;
     }
 
     if (points.type() != CV_32FC3)
     {
-        this->Text(name, "Points: input points is not CV_32FC3");
+        LogWarn("Points: input points is not CV_32FC3");
         return;
     }
 
     if (img.size() != points.size())
     {
-        this->Text(name, "Points: input image and points size mismatch");
+        LogWarn("Points: input image and points size mismatch");
         return;
     }
 

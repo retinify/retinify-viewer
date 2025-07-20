@@ -16,14 +16,7 @@ class Viewer
     Viewer &operator=(const Viewer &) = delete;
     Viewer(Viewer &&) = delete;
     Viewer &operator=(Viewer &&) = delete;
-    /**
-     * @brief Log text to viewer
-     *
-     * @param name category name
-     * @param text text to log
-     * @param color text color
-     */
-    void Text(const std::string &name, const std::string &text, cv::Scalar color = cv::Scalar(255, 255, 255));
+
     /**
      * @brief Log image to viewer
      *
@@ -32,6 +25,7 @@ class Viewer
      * @note image must be BGR CV_8UC3
      */
     void Image(const std::string &name, const cv::Mat &img);
+
     /**
      * @brief Log points to viewer
      *
